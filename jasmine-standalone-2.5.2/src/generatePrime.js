@@ -3,9 +3,9 @@
 * @author Allan McKinlay
 * @date 07/03/17
 */
+var start;
 function main(){
 
-  var start = new Date().getTime();
   var numPrimesFound = 0;
   var targetNumPrimes = getNumPrimes();
   var primesCheckedUpTo;
@@ -33,14 +33,13 @@ function main(){
     numPrimesFound = primes.length;
     upperBound += segSize;
   }
-  var end = new Date().getTime();
-  var time = end - start;
-  printResult(primes, targetNumPrimes, time);
+  printResult(primes, targetNumPrimes);
 }
 
 function getNumPrimes(){
   var numPrimes = parseInt(document.getElementById('numPrimes').value);
   if(numPrimes < 1 || numPrimes == NaN){return false;}
+  start = new Date().getTime();
   return numPrimes;
 }
 
@@ -103,7 +102,7 @@ function segSieve(lowerBound, upperBound, primes){
   return resultPrimes;
 }
 
-function printResult(primes, numPrimes, time)
+function printResult(primes, numPrimes)
 {
   var display = [];
   for(var i=0; i<numPrimes; i++) //Trim excess results
@@ -124,7 +123,7 @@ function printResult(primes, numPrimes, time)
         multiArray[row][cell] = display[cell -1];
       }else if (row>0 && cell == 0) {//Left most cell of row
         multiArray[row][cell] = display[row-1];
-      }else {//Any normal product cell
+      }else {//Any normal product cell. Using the transpose here would half the number of calculations
         multiArray[row][cell] = display[row-1]*display[cell-1];
       }
     }
@@ -152,5 +151,7 @@ function printResult(primes, numPrimes, time)
   document.getElementById("table").innerHTML = htmlBuffer;
 
   //document.getElementById("Primes").innerHTML = display.join();
+  var end = new Date().getTime();
+  var time = end - start;
   document.getElementById("time").innerHTML = "Time taken: " + time +"ms";
 }
