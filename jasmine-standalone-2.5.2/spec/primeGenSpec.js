@@ -1,12 +1,7 @@
-describe ("genPrimeList", function(){
+describe ("main", function(){
 
   it("is defined", function(){
-    expect(genPrimeList).not.toBeUndefined();
-  });
-
-  it("should return an array with the number of primes asked for", function(){
-    var result = genNumList(5);
-    expect(result.length).toEqual(5);
+    expect(main).not.toBeUndefined();
   });
 
 });
