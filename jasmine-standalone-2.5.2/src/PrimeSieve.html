@@ -1,6 +1,11 @@
 <html>
 <head>
 			<script src="generatePrime.js"></script>
+			<script>
+  			window.addEventListener("load", function(event) {
+    			console.log("All resources finished loading!");
+  			});
+		</script>
 </head>
 	<body>
 		<h1> Prime Sieve </h1>
@@ -11,7 +16,7 @@
   	<br>
   	<button onclick="main()">Start</button>
 
-		<p id="time"></p>
+		<p id="totalTime"></p>
 		<br>
 		<p id="Primes"></p>
 		<div id =table>
